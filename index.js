@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const express = require('express');
-const helmet = require('helmet');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const { errors } = require('celebrate');
 const { createUserValidate, loginValidate } = require('./middlewares/validation');
 const { errorLogger, requestLogger } = require('./middlewares/loggers');
@@ -16,8 +18,6 @@ const auth = require('./middlewares/auth');
 
 mongoose.connect(dataMovies, {
   useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
   useUnifiedTopology: true,
 });
 
