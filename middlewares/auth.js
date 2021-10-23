@@ -1,9 +1,6 @@
+const { NODE_ENV, JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
 const Unauthorized = require('../errors/unauthorized');
-const {
-  NODE_ENV,
-  JWT_SECRET,
-} = require('../utils/dbconfig');
 
 module.exports = (req, res, next) => {
   console.log(req.headers);
