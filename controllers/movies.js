@@ -62,7 +62,11 @@ const deleteMovie = (req, res, next) => {
       }
       throw new Forbidden('нет прав на удаление фильма');
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        next(new BadRequest('такого фильма нет'));
+      } return next(err);
+    });
 };
 
 module.exports = {
